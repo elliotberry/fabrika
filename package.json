@@ -13,8 +13,7 @@
   },
   "peerDependencies": {
     "fabric": "^4.3.0",
-    "react": "^16.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
+    "react": "^16.0.0"
   },
   "files": [
     "dist"
