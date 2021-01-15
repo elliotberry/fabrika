@@ -1,8 +1,8 @@
-'use strict';
+
 
 import {PropTypes} from 'react';
 import FabricObject from '../base/Object.jsx';
-import {fabric} from 'fabric-webpack';
+import {fabric} from 'fabric';
 
 export default class Group extends FabricObject {
 	constructor(props, context) {

@@ -1,8 +1,8 @@
-'use strict';
+
 
 import {PropTypes} from 'react';
 import Path from './Path';
-import {fabric} from 'fabric-webpack';
+import {fabric} from 'fabric';
 
 export default class PathGroup extends Path {
 	constructor(props, context) {

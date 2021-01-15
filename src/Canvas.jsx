@@ -1,4 +1,4 @@
-'use strict';
+
 
 import { PropTypes } from 'react';
 import StaticCanvas from './StaticCanvas.jsx';
