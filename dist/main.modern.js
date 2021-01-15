@@ -388,23 +388,23 @@ var StaticCanvas = /*#__PURE__*/function (_React$Component) {
     if (!canvas) return;
 
     if (this.props.beforeRender instanceof Function) {
-      canvas.on('before:render', this.props.beforeRender);
+      canvas.on("before:render", this.props.beforeRender);
     }
 
     if (this.props.afterRender instanceof Function) {
-      canvas.on('after:render', this.props.afterRender);
+      canvas.on("after:render", this.props.afterRender);
     }
 
     if (this.props.onCanvasCleared instanceof Function) {
-      canvas.on('canvas:cleared', this.props.onCanvasCleared);
+      canvas.on("canvas:cleared", this.props.onCanvasCleared);
     }
 
     if (this.props.onObjectAdded instanceof Function) {
-      canvas.on('object:added', this.props.onObjectAdded);
+      canvas.on("object:added", this.props.onObjectAdded);
     }
 
     if (this.props.onObjectRemoved instanceof Function) {
-      canvas.on('object:removed', this.props.onObjectRemoved);
+      canvas.on("object:removed", this.props.onObjectRemoved);
     }
   };
 
@@ -413,33 +413,33 @@ var StaticCanvas = /*#__PURE__*/function (_React$Component) {
     if (!canvas) return;
 
     if (this.props.beforeRender && !nextProps.beforeRender) {
-      canvas.off('before:render');
+      canvas.off("before:render");
     } else if (nextProps.beforeRender instanceof Function) {
-      canvas.on('before:render', this.props.beforeRender);
+      canvas.on("before:render", this.props.beforeRender);
     }
 
     if (this.props.afterRender && !nextProps.afterRender) {
-      object.off('after:render');
+      object.off("after:render");
     } else if (nextProps.afterRender instanceof Function) {
-      object.on('after:render', this.props.afterRender);
+      object.on("after:render", this.props.afterRender);
     }
 
     if (this.props.onCanvasCleared && !nextProps.onCanvasCleared) {
-      object.off('canvas:cleared');
+      object.off("canvas:cleared");
     } else if (nextProps.onCanvasCleared instanceof Function) {
-      object.on('canvas:cleared', this.props.onCanvasCleared);
+      object.on("canvas:cleared", this.props.onCanvasCleared);
     }
 
     if (this.props.onObjectAdded && !nextProps.onObjectAdded) {
-      object.off('object:added');
+      object.off("object:added");
     } else if (nextProps.onObjectAdded instanceof Function) {
-      object.on('object:added', this.props.onObjectAdded);
+      object.on("object:added", this.props.onObjectAdded);
     }
 
     if (this.props.onObjectRemoved && !nextProps.onObjectRemoved) {
-      object.off('object:removed');
+      object.off("object:removed");
     } else if (nextProps.onObjectRemoved instanceof Function) {
-      object.on('object:removed', this.props.onObjectRemoved);
+      object.on("object:removed", this.props.onObjectRemoved);
     }
   };
 
@@ -503,14 +503,14 @@ StaticCanvas.propTypes = {
 };
 StaticCanvas.defaultProps = {
   allowTouchScrolling: false,
-  backgroundColor: '',
+  backgroundColor: "",
   backgroundImage: null,
   clipTo: null,
   controlsAboveOverlay: false,
   FX_DURATION: 500,
   imageSmoothingEnabled: true,
   includeDefaultValues: true,
-  overlayColor: '',
+  overlayColor: "",
   overlayImage: null,
   preserveObjectStacking: false,
   renderOnAddRemove: true,
@@ -519,7 +519,7 @@ StaticCanvas.defaultProps = {
   viewportTransform: null,
   width: 100,
   height: 100,
-  id: 'c'
+  id: "c"
 };
 
 var Canvas = /*#__PURE__*/function (_StaticCanvas) {
@@ -1305,679 +1305,6 @@ FabricObject.defaultProps = {
   stateProperties: ('top left width height scaleX scaleY flipX flipY originX originY transformMatrix ' + 'stroke strokeWidth strokeDashArray strokeLineCap strokeLineJoin strokeMiterLimit ' + 'angle opacity fill fillRule globalCompositeOperation shadow clipTo visible backgroundColor ' + 'alignX alignY meetOrSlice skewX skewY').split(' ')
 };
 
-var PI = Math.PI;
-
-var Circle$1 = /*#__PURE__*/function (_FabricObject) {
-  _inheritsLoose(Circle, _FabricObject);
-
-  function Circle(props, context) {
-    var _this;
-
-    _this = _FabricObject.call(this, props, context) || this;
-    _this.state = {
-      object: null
-    };
-    _this.draw = _this.draw.bind(_assertThisInitialized(_this));
-
-    _this.toObject = function (propertiesToInclude) {
-      return _this.state.object && _this.state.object.toObject(propertiesToInclude);
-    };
-
-    _this.toSVG = function (reviver) {
-      return _this.state.object && _this.state.object.toSVG(reviver);
-    };
-
-    _this.getRadiusX = function () {
-      return _this.state.object && _this.state.object.getRadiusX();
-    };
-
-    _this.getRadiusY = function () {
-      return _this.state.object && _this.state.object.getRadiusY();
-    };
-
-    _this.setRadius = function (value) {
-      return _this.state.object && _this.state.object.setRadius(value);
-    };
-
-    _this.renderf = function (ctx, noTransform) {
-      return _this.state.object && _this.state.object.render(ctx, noTransform);
-    };
-
-    _this.complexity = function () {
-      return 1;
-    };
-
-    return _this;
-  }
-
-  var _proto = Circle.prototype;
-
-  _proto.draw = function draw(cb) {
-    var object;
-
-    if (this.props.element instanceof Object) {
-      object = fabric.Circle.fromElement(this.props.element, this.props);
-    } else if (this.props.object instanceof Object) {
-      object = fabric.Circle.fromObject(this.props.object);
-    } else {
-      object = new fabric.Circle(this.props);
-    }
-
-    _FabricObject.prototype.draw.call(this, object, cb);
-  };
-
-  _proto.render = function render() {
-    return /*#__PURE__*/React.createElement("div", null);
-  };
-
-  return Circle;
-}(FabricObject);
-
-Circle$1.fromElement = function (element, options) {
-  return fabric.Circle.fromElement(element, options);
-};
-
-Circle$1.fromObject = function (object) {
-  return fabric.Circle.fromObject(object);
-};
-
-Circle$1.attribute = fabric.Circle.ATTRIBUTE_NAMES;
-Circle$1.propTypes = Object.assign(FabricObject.propTypes, {
-  endAngle: PropTypes.number,
-  radius: PropTypes.number,
-  startAngle: PropTypes.number
-});
-Circle$1.defaultProps = Object.assign(FabricObject.defaultProps, {
-  endAngle: 2 * PI,
-  radius: 0,
-  startAngle: 0,
-  type: 'circle'
-});
-
-var Ellipse = /*#__PURE__*/function (_FabricObject) {
-  _inheritsLoose(Ellipse, _FabricObject);
-
-  function Ellipse(props, context) {
-    var _this;
-
-    _this = _FabricObject.call(this, props, context) || this;
-    _this.state = {
-      object: null
-    };
-    _this.draw = _this.draw.bind(_assertThisInitialized(_this));
-
-    _this.getRx = function () {
-      return _this.state.object && _this.state.object.getRx();
-    };
-
-    _this.getRy = function () {
-      return _this.state.object && _this.state.object.getRy();
-    };
-
-    _this.toObject = function (propertiesToInclude) {
-      return _this.state.object && _this.state.object.toObject(propertiesToInclude);
-    };
-
-    _this.toSVG = function (reviver) {
-      return _this.state.object && _this.state.object.toObject(reviver);
-    };
-
-    _this.renderf = function () {
-      return _this.state.object && _this.state.object.render();
-    };
-
-    _this.complexity = function () {
-      return 1;
-    };
-
-    return _this;
-  }
-
-  var _proto = Ellipse.prototype;
-
-  _proto.draw = function draw(cb) {
-    var object;
-
-    if (this.props.element instanceof Object) {
-      object = fabric.Ellipse.fromElement(this.props.element, this.props);
-    } else if (this.props.object instanceof Object) {
-      object = fabric.Ellipse.fromObject(this.props.object);
-    } else {
-      object = new fabric.Ellipse(this.props);
-    }
-
-    _FabricObject.prototype.draw.call(this, object, cb);
-  };
-
-  return Ellipse;
-}(FabricObject);
-
-Ellipse.fromElement = function (element, options) {
-  return fabric.Ellipse.fromElement(element, options);
-};
-
-Ellipse.fromObject = function (object) {
-  return fabric.Ellipse.fromObject(object);
-};
-
-Ellipse.attribute = fabric.Ellipse.ATTRIBUTE_NAMES;
-Ellipse.propTypes = Object.assign(FabricObject.propTypes, {
-  rx: PropTypes.number,
-  ry: PropTypes.number
-});
-Ellipse.defaultProps = Object.assign(FabricObject.defaultProps, {
-  rx: 0,
-  ry: 0,
-  type: 'ellipse'
-});
-
-var Line = /*#__PURE__*/function (_FabricObject) {
-  _inheritsLoose(Line, _FabricObject);
-
-  function Line(props, context) {
-    var _this;
-
-    _this = _FabricObject.call(this, props, context) || this;
-    _this.state = {
-      object: null
-    };
-    _this.draw = _this.draw.bind(_assertThisInitialized(_this));
-
-    _this.toObject = function (propertiesToInclude) {
-      return _this.state.object && _this.state.object.toObject(propertiesToInclude);
-    };
-
-    _this.calcLinePoints = function () {
-      return _this.state.object && _this.state.object.calcLinePoints();
-    };
-
-    _this.toSVG = function (reviver) {
-      return _this.state.object && _this.state.object.toSVG(reviver);
-    };
-
-    _this.complexity = function () {
-      return 1;
-    };
-
-    return _this;
-  }
-
-  var _proto = Line.prototype;
-
-  _proto.draw = function draw(cb) {
-    var object;
-
-    if (this.props.element instanceof Object) {
-      object = fabric.Line.fromElement(this.props.element, this.props);
-    } else if (this.props.object instanceof Object) {
-      object = fabric.Line.fromObject(this.props.object);
-    } else {
-      object = new fabric.Line(this.props);
-    }
-
-    _FabricObject.prototype.draw.call(this, object, cb);
-  };
-
-  return Line;
-}(FabricObject);
-
-Circle.fromElement = function (element, options) {
-  return fabric.Line.fromElement(element, options);
-};
-
-Circle.fromObject = function (object) {
-  return fabric.Line.fromObject(object);
-};
-
-Circle.attribute = fabric.Line.ATTRIBUTE_NAMES;
-Circle.propTypes = Object.assign(FabricObject.propTypes, {
-  x1: PropTypes.number,
-  y1: PropTypes.number,
-  x2: PropTypes.number,
-  y2: PropTypes.number
-});
-Circle.defaultProps = Object.assign(FabricObject.defaultProps, {
-  type: 'line',
-  x1: 0,
-  y1: 0,
-  x2: 0,
-  y2: 0
-});
-
-var Path = /*#__PURE__*/function (_FabricObject) {
-  _inheritsLoose(Path, _FabricObject);
-
-  function Path(props, context) {
-    var _this;
-
-    _this = _FabricObject.call(this, props, context) || this;
-    _this.state = {
-      object: null
-    };
-    _this.draw = _this.draw.bind(_assertThisInitialized(_this));
-
-    _this.toString = function () {
-      return _this.state.object && _this.state.object.toString();
-    };
-
-    _this.toObject = function (propertiesToInclude) {
-      return _this.state.object && _this.state.object.toObject(propertiesToInclude);
-    };
-
-    _this.toDatalessObject = function (propertiesToInclude) {
-      return _this.state.object.toDatalessObject(propertiesToInclude);
-    };
-
-    _this.toSVG = function (reviver) {
-      return _this.state.object && _this.state.object.toSVG(reviver);
-    };
-
-    _this.complexity = function () {
-      return _this.state.object && _this.state.object.complexity();
-    };
-
-    return _this;
-  }
-
-  var _proto = Path.prototype;
-
-  _proto.draw = function draw(cb) {
-    var _this2 = this;
-
-    if (this.props.element instanceof Object) {
-      fabric.Path.fromElement(this.props.element, function (instance) {
-        return _FabricObject.prototype.draw.call(_this2, instance, cb);
-      }, this.props);
-    } else if (this.props.object instanceof Object) {
-      fabric.Path.fromObject(this.props.object, function (instance) {
-        return _FabricObject.prototype.draw.call(_this2, instance, cb);
-      });
-    } else {
-      var object = new fabric.Path(this.props.path, this.props);
-
-      _FabricObject.prototype.draw.call(this, object, cb);
-
-      return object;
-    }
-  };
-
-  return Path;
-}(FabricObject);
-
-Path.fromElement = function (element, callback, options) {
-  return fabric.Path.fromElement(element, callback, options);
-};
-
-Path.fromObject = function (object, callback) {
-  return fabric.Path.fromObject(object, callback);
-};
-
-Path.attribute = fabric.Path.ATTRIBUTE_NAMES;
-Path.propTypes = Object.assign(FabricObject.propTypes, {
-  path: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-  minX: PropTypes.number,
-  minY: PropTypes.number
-});
-Path.defaultProps = Object.assign(FabricObject.defaultProps, {
-  type: 'path',
-  path: null,
-  minX: 0,
-  minY: 0
-});
-
-var PathGroup = /*#__PURE__*/function (_Path) {
-  _inheritsLoose(PathGroup, _Path);
-
-  function PathGroup(props, context) {
-    var _this;
-
-    _this = _Path.call(this, props, context) || this;
-    _this.state = {
-      object: null
-    };
-    _this.draw = _this.draw.bind(_assertThisInitialized(_this));
-
-    _this.parseDimensionsFromPaths = function (options) {
-      return _this.state.object && _this.state.object.parseDimensionsFromPaths(options);
-    };
-
-    _this.renderf = function (ctx) {
-      return _this.state.object && _this.state.object.renderf(ctx);
-    };
-
-    _this.toObject = function (propertiesToInclude) {
-      return _this.state.object.toObject(propertiesToInclude);
-    };
-
-    _this.toDatalessObject = function (propertiesToInclude) {
-      return _this.state.object && _this.state.object.toDatalessObject(propertiesToInclude);
-    };
-
-    _this.toSVG = function (reviver) {
-      return _this.state.object && _this.state.object.toSVG(reviver);
-    };
-
-    _this.toString = function () {
-      return _this.state.object && _this.state.object.toSVG();
-    };
-
-    _this.isSameColor = function () {
-      return _this.state.object && _this.state.object.isSameColor();
-    };
-
-    _this.complexity = function () {
-      return _this.state.object && _this.state.object.complexity();
-    };
-
-    _this.getObjects = function () {
-      return _this.state.object && _this.state.object.getObjects();
-    };
-
-    return _this;
-  }
-
-  var _proto = PathGroup.prototype;
-
-  _proto.draw = function draw(cb) {
-    var _this2 = this;
-
-    if (this.props.element instanceof Object) {
-      fabric.PathGroup.fromElement(this.props.element, function (instance) {
-        return _Path.prototype.draw.call(_this2, instance, cb);
-      }, this.props);
-    } else if (this.props.object instanceof Object) {
-      fabric.PathGroup.fromObject(this.props.object, function (instance) {
-        return _Path.prototype.draw.call(_this2, instance, cb);
-      });
-    } else {
-      var paths = [];
-
-      if (this.props.children instanceof Array) {
-        this.props.children.forEach(function (child) {
-          return paths.push(new fabric.Path(child.props.path, child.props));
-        });
-      } else {
-        paths.push(new fabric.Path(this.props.children.props.path, this.props.children.props));
-      }
-
-      var object = new fabric.PathGroup(paths, this.props);
-
-      _Path.prototype.draw.call(this, object, cb);
-    }
-  };
-
-  return PathGroup;
-}(Path);
-
-PathGroup.fromElement = function (element, callback, options) {
-  return fabric.PathGroup.fromElement(element, callback, options);
-};
-
-PathGroup.fromObject = function (object, callback) {
-  return fabric.PathGroup.fromObject(object, callback);
-};
-
-PathGroup.attribute = fabric.PathGroup.ATTRIBUTE_NAMES;
-PathGroup.defaultProps = Object.assign(Path.defaultProps, {
-  type: 'path-group',
-  fill: ''
-});
-
-var Polygon = /*#__PURE__*/function (_FabricObject) {
-  _inheritsLoose(Polygon, _FabricObject);
-
-  function Polygon(props, context) {
-    var _this;
-
-    _this = _FabricObject.call(this, props, context) || this;
-    _this.state = {
-      object: null
-    };
-    _this.draw = _this.draw.bind(_assertThisInitialized(_this));
-
-    _this.toObject = function (propertiesToInclude) {
-      return _this.state.object && _this.state.object.toObject(propertiesToInclude);
-    };
-
-    _this.toSVG = function (reviver) {
-      return _this.state.object && _this.state.object.toSVG(reviver);
-    };
-
-    _this.commonRender = function () {
-      return _this.state.object && _this.state.object.commonRender();
-    };
-
-    _this.complexity = function () {
-      return _this.props.points ? _this.props.points.length : 0;
-    };
-
-    return _this;
-  }
-
-  var _proto = Polygon.prototype;
-
-  _proto.draw = function draw(cb) {
-    var object;
-
-    if (this.props.element instanceof Object) {
-      object = fabric.Polygon.fromElement(this.props.element, this.props);
-    } else if (this.props.object instanceof Object) {
-      object = fabric.Polygon.fromObject(this.props.object);
-    } else {
-      object = new fabric.Polygon(this.props);
-    }
-
-    _FabricObject.prototype.draw.call(this, object, cb);
-  };
-
-  return Polygon;
-}(FabricObject);
-
-Polygon.fromElement = function (element, options) {
-  return fabric.Polygon.fromElement(element, options);
-};
-
-Polygon.fromObject = function (object) {
-  return fabric.Polygon.fromObject(object);
-};
-
-Polygon.attribute = fabric.Polygon.ATTRIBUTE_NAMES;
-Polygon.propTypes = Object.assign(FabricObject.propTypes, {
-  points: PropTypes.array,
-  minX: PropTypes.number,
-  minY: PropTypes.number
-});
-Polygon.defaultProps = Object.assign(FabricObject.defaultProps, {
-  type: 'polygon',
-  points: null,
-  minX: 0,
-  minY: 0
-});
-
-var Polyline = /*#__PURE__*/function (_FabricObject) {
-  _inheritsLoose(Polyline, _FabricObject);
-
-  function Polyline(props, context) {
-    var _this;
-
-    _this = _FabricObject.call(this, props, context) || this;
-    _this.state = {
-      object: null
-    };
-    _this.draw = _this.draw.bind(_assertThisInitialized(_this));
-
-    _this.toObject = function (propertiesToInclude) {
-      return _this.state.object && _this.state.object.toObject(propertiesToInclude);
-    };
-
-    _this.toSVG = function (reviver) {
-      return _this.state.object && _this.state.object.toSVG(reviver);
-    };
-
-    _this.complexity = function () {
-      return _this.props.points ? _this.props.points.length : 0;
-    };
-
-    return _this;
-  }
-
-  var _proto = Polyline.prototype;
-
-  _proto.draw = function draw(cb) {
-    var object;
-
-    if (this.props.element instanceof Object) {
-      object = fabric.Polyline.fromElement(this.props.element, this.props);
-    } else if (this.props.object instanceof Object) {
-      object = fabric.Polyline.fromObject(this.props.object);
-    } else {
-      object = new fabric.Polyline(this.props);
-    }
-
-    _FabricObject.prototype.draw.call(this, object, cb);
-  };
-
-  return Polyline;
-}(FabricObject);
-
-Polyline.fromElement = function (element, options) {
-  return fabric.Polyline.fromElement(element, options);
-};
-
-Polyline.fromObject = function (object) {
-  return fabric.Polyline.fromObject(object);
-};
-
-Polyline.attribute = fabric.Polyline.ATTRIBUTE_NAMES;
-Polyline.propTypes = Object.assign(FabricObject.propTypes, {
-  points: PropTypes.array,
-  minX: PropTypes.number,
-  minY: PropTypes.number
-});
-Polyline.defaultProps = Object.assign(FabricObject.defaultProps, {
-  type: 'polyline',
-  points: null,
-  minX: 0,
-  minY: 0
-});
-
-var Rect = /*#__PURE__*/function (_FabricObject) {
-  _inheritsLoose(Rect, _FabricObject);
-
-  function Rect(props, context) {
-    var _this;
-
-    _this = _FabricObject.call(this, props, context) || this;
-    _this.state = {
-      object: null
-    };
-    _this.draw = _this.draw.bind(_assertThisInitialized(_this));
-
-    _this.toObject = function (propertiesToInclude) {
-      return _this.state.object && _this.state.object.toObject(propertiesToInclude);
-    };
-
-    _this.toSVG = function (reviver) {
-      return _this.state.object && _this.state.object.toSVG(reviver);
-    };
-
-    _this.complexity = function () {
-      return 1;
-    };
-
-    return _this;
-  }
-
-  var _proto = Rect.prototype;
-
-  _proto.draw = function draw(cb) {
-    var object;
-
-    if (this.props.element instanceof Object) {
-      object = fabric.Rect.fromElement(this.props.element, this.props);
-    } else if (this.props.object instanceof Object) {
-      object = fabric.Rect.fromObject(this.props.object);
-    } else {
-      object = new fabric.Rect(this.props);
-    }
-
-    _FabricObject.prototype.draw.call(this, object, cb);
-  };
-
-  return Rect;
-}(FabricObject);
-
-Rect.fromElement = function (element, options) {
-  return fabric.Rect.fromElement(element, options);
-};
-
-Rect.fromObject = function (object) {
-  return fabric.Rect.fromObject(object);
-};
-
-Rect.attribute = fabric.Rect.ATTRIBUTE_NAMES;
-Rect.propTypes = Object.assign(FabricObject.propTypes, {
-  rx: PropTypes.number,
-  ry: PropTypes.number
-});
-Rect.defaultProps = Object.assign(FabricObject.defaultProps, {
-  type: 'rect',
-  rx: 0,
-  ry: 0,
-  strokeDashArray: null
-});
-
-var Triangle = /*#__PURE__*/function (_FabricObject) {
-  _inheritsLoose(Triangle, _FabricObject);
-
-  function Triangle(props, context) {
-    var _this;
-
-    _this = _FabricObject.call(this, props, context) || this;
-    _this.state = {
-      object: null
-    };
-    _this.draw = _this.draw.bind(_assertThisInitialized(_this));
-
-    _this.toSVG = function (reviver) {
-      return _this.state.object && _this.state.object.toSVG(reviver);
-    };
-
-    _this.complexity = function () {
-      return 1;
-    };
-
-    return _this;
-  }
-
-  var _proto = Triangle.prototype;
-
-  _proto.draw = function draw(cb) {
-    var object;
-
-    if (this.props.element instanceof Object) {
-      object = fabric.Triangle.fromElement(this.props.element, this.props);
-    } else if (this.props.object instanceof Object) {
-      object = fabric.Triangle.fromObject(this.props.object);
-    } else {
-      object = new fabric.Triangle(this.props);
-    }
-
-    _FabricObject.prototype.draw.call(this, object, cb);
-  };
-
-  return Triangle;
-}(FabricObject);
-
-Triangle.fromObject = function (object) {
-  return fabric.Triangle.fromObject(object);
-};
-
-Triangle.propTypes = FabricObject.propTypes;
-Triangle.defaultProps = Object.assign(FabricObject.defaultProps, {
-  type: 'triangle'
-});
-
 var Image = /*#__PURE__*/function (_FabricObject) {
   _inheritsLoose(Image, _FabricObject);
 
@@ -2170,23 +1497,23 @@ Text.propTypes = Object.assign(FabricObject.propTypes, {
   fontSize: PropTypes.number,
   fontWeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   fontFamily: PropTypes.string,
-  textDecoration: PropTypes.oneOf(['', 'underline', 'overline', 'line-through']),
-  textAlign: PropTypes.oneOf(['left', 'center', 'right', 'justify']),
-  fontStyle: PropTypes.oneOf(['', 'normal', 'italic', 'oblique']),
+  textDecoration: PropTypes.oneOf(["", "underline", "overline", "line-through"]),
+  textAlign: PropTypes.oneOf(["left", "center", "right", "justify"]),
+  fontStyle: PropTypes.oneOf(["", "normal", "italic", "oblique"]),
   lineHeight: PropTypes.number,
   textBackgroundColor: PropTypes.string
 });
 Text.defaultProps = Object.assign(FabricObject.defaultProps, {
-  type: 'text',
-  stateProperties: FabricObject.defaultProps.stateProperties.concat(['fontFamily', 'fontWeight', 'fontSize', 'text', 'textDecoration', 'textAlign', 'fontStyle', 'lineHeight', 'textBackgroundColor']),
+  type: "text",
+  stateProperties: FabricObject.defaultProps.stateProperties.concat(["fontFamily", "fontWeight", "fontSize", "text", "textDecoration", "textAlign", "fontStyle", "lineHeight", "textBackgroundColor"]),
   fontSize: 40,
-  fontWeight: 'normal',
-  fontFamily: 'Times New Roman',
-  textDecoration: '',
-  textAlign: 'left',
-  fontStyle: '',
+  fontWeight: "normal",
+  fontFamily: "Times New Roman",
+  textDecoration: "",
+  textAlign: "left",
+  fontStyle: "",
   lineHeight: 1.16,
-  textBackgroundColor: '',
+  textBackgroundColor: "",
   stroke: null,
   shadow: null
 });
@@ -2400,38 +1727,12 @@ var _color = fabric.Color;
 var reactFabric = {
   StaticCanvas: StaticCanvas,
   Canvas: Canvas,
-  Circle: Circle$1,
-  Ellipse: Ellipse,
-  Line: Line,
-  Path: Path,
-  PathGroup: PathGroup,
-  Polygon: Polygon,
-  Polyline: Polyline,
-  Rect: Rect,
-  Triangle: Triangle,
   Image: Image,
   Text: Text,
   Itext: IText,
   imageFilter: _imageFilter,
   color: _color
 };
-var StaticCanvas$1 = StaticCanvas;
-var Canvas$1 = Canvas;
-var Circle$2 = Circle$1;
-var Ellipse$1 = Ellipse;
-var Line$1 = Line;
-var Path$1 = Path;
-var PathGroup$1 = PathGroup;
-var Polygon$1 = Polygon;
-var Polyline$1 = Polyline;
-var Rect$1 = Rect;
-var Triangle$1 = Triangle;
-var Image$1 = Image;
-var Text$1 = Text;
-var Itext = IText;
-var imageFilter = _imageFilter;
-var color = _color;
 
 export default reactFabric;
-export { Canvas$1 as Canvas, Circle$2 as Circle, Ellipse$1 as Ellipse, Image$1 as Image, Itext, Line$1 as Line, Path$1 as Path, PathGroup$1 as PathGroup, Polygon$1 as Polygon, Polyline$1 as Polyline, Rect$1 as Rect, StaticCanvas$1 as StaticCanvas, Text$1 as Text, Triangle$1 as Triangle, color, imageFilter };
 //# sourceMappingURL=main.modern.js.map
